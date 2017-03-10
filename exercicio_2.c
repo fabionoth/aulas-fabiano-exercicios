@@ -1,6 +1,9 @@
 
 #include<stdio.h>
 
+//Adapte  a  solução  do  exercício  anterior  para  que  a  saída  seja  exatamente  conforme  especificada  na figura2
+
+ 
 
 int main(){
     int valor = 10;
@@ -30,3 +33,16 @@ int main(){
     }
     return 0;
 }
+
+/*
+Saída
+          1
+         121
+        12321
+       1234321
+      123454321
+     12345654321
+    1234567654321
+   123456787654321
+  12345678987654321
+*/
