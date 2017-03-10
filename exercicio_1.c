@@ -1,6 +1,8 @@
 
 #include<stdio.h>
 
+ //Faca um programa em C que imprima exatamente a sa ́ıda especificada na figura 1 (abaixo) de maneira que, em todo o programa, n ̃ao apare ̧cam mais do que tres comandos de impressao.
+ 
 int main(){
     int linha, coluna;
     int aux = 0;
