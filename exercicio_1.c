@@ -1,13 +1,17 @@
 
 #include<stdio.h>
 
- //Faca um programa em C que imprima exatamente a sa ́ıda especificada na figura 1 (abaixo) de maneira que, em todo o programa, n ̃ao apare ̧cam mais do que tres comandos de impressao.
+ //Faca um programa em C que imprima exatamente a sa ́ıda especificada na figura 1 (abaixo) de maneira que, em todo o programa, nao aparȩcam mais do que tres comandos de impressao.
  
+
 int main(){
+    int valor = 10;
+    
     int linha, coluna;
     int aux = 0;
-    for(linha = 1; linha < 10; linha++){
-        for (coluna = 1; coluna < 20; coluna++){
+
+    for(linha = 1; linha < valor; linha++){
+        for (coluna = 1; coluna < (valor *2); coluna++){
             if(linha >= coluna){
                 printf("%i", coluna);
             }
@@ -23,3 +27,16 @@ int main(){
     }
     return 0;
 }
+
+/*
+outout: 
+1
+121
+12321
+1234321
+123454321
+12345654321
+1234567654321
+123456787654321
+12345678987654321
+*/
