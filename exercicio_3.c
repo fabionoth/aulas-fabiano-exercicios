@@ -4,14 +4,11 @@ Para isto, coletou dados do último censo realizado e criou um arquivo contendo,
 de um cidadão particular e seu salário.  As idades variam de zero a 110 e os salários variam de zero a
 19.000,00 unidades da moeda local (salário do seu dirigente máximo).
 As faixas salariais de interesse são as seguintes:
-• de 0 a 3 salários mínimos
+• de 0 a 3 salários mínimos = 
 • de 4 a 9 salários mínimos
 • de 10 a 20 salários mínimos
 • acima de 20 salários mínimos.
 Sendo o salário mínimo igual a 450,00 unidades da moeda local.
-
-***************************************************************************
-Este exercício contén falhas, favor verificar os ifs finais line: 55
 
 */
 
@@ -31,9 +28,12 @@ int main(void)
     size_t len = 0;
     ssize_t read;
     
-    int count_lines = 1;
-    int value;
-    int count_firts, count_second, count_thirth, count_fourth = 0;
+    int count_lines = 0;
+    int value = 0;
+    int count_firts = 0;
+    int count_second = 0;
+    int count_thirth = 0;
+    int count_fourth = 0;
     int salario_minimo = 450;
 
 
@@ -51,27 +51,25 @@ int main(void)
         strncpy(sub, line + strcspn(line," "), sizeof(line)-1);
 
         value = atoi(sub);
-
-        if(0 < value && ((salario_minimo*3) + 1 > value)){
+        ++count_lines;
+        if(0 < value && ( ((salario_minimo * 3) + 1) > value)){
            count_firts++;
         }
-        else if((salario_minimo*3) < value && ((salario_minimo* 9) + 1 > value)){
+        else if((salario_minimo * 3 ) < value && (((salario_minimo * 9) + 1) > value)){
            count_second++;
         }
-        else if((salario_minimo* 9) < value && ((salario_minimo*20) + 1 > value)){
+        else if((salario_minimo * 9) < value && (((salario_minimo * 20) + 1) > value)){
            count_thirth++;
         }else {
             count_fourth++;
         }
-
-        count_lines ++;
     }
 
-    printf("%i\n", count_firts);
-    printf("%i\n", count_second);
-    printf("%i\n", count_thirth);
-    printf("%i\n", count_fourth);
-    printf("%i\n", count_lines);
+    printf("Primeira faixa: %.2f\n", (double)(100*count_firts)/count_lines );
+    printf("Segunda faixa: %.2f\n", (double)(100*count_second)/count_lines);
+    printf("Terceira faixa: %.2f\n", (double)(100*count_thirth)/count_lines);
+    printf("Quarta faixa: %.2f\n", (double)(100*count_fourth)/count_lines);
+    printf("Resultados contabilizados: %i\n", count_lines);
 
     fclose(fp);
     if (line){
@@ -79,3 +77,13 @@ int main(void)
     }
     exit(EXIT_SUCCESS);
 }
+
+
+/*
+Result 
+Primeira faixa: 7.59
+Segunda faixa: 14.83
+Terceira faixa: 25.83
+Quarta faixa: 51.75
+Resultados contabilizados: 10000
+*/
