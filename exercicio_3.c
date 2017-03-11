@@ -10,6 +10,8 @@ As faixas salariais de interesse são as seguintes:
 • acima de 20 salários mínimos.
 Sendo o salário mínimo igual a 450,00 unidades da moeda local.
 
+***************************************************************************
+Este exercício contén falhas, favor verificar os ifs finais line: 55
 
 */
 
@@ -17,15 +19,22 @@ Sendo o salário mínimo igual a 450,00 unidades da moeda local.
 #define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
+
 
 int main(void)
 {
     FILE *fp;
     char *line = NULL;
-    
+    char sub[100];
     size_t len = 0;
     ssize_t read;
+    
     int count_lines = 1;
+    int value;
+    int count_firts, count_second, count_thirth, count_fourth = 0;
+    int salario_minimo = 450;
 
 
     fp = fopen("censo.txt", "r");
@@ -33,14 +42,40 @@ int main(void)
         exit(EXIT_FAILURE);
     
     while ((read = getline(&line, &len, fp)) != -1) {
-        printf("%s", line);
-        sizeof(line);
-        strcspn(line," ");
+        /*
+        atoi - string to num
+        strncpy - substring
+        strcspn - indexof
+        sizeof - size of string
+        */
+        strncpy(sub, line + strcspn(line," "), sizeof(line)-1);
+
+        value = atoi(sub);
+
+        if(0 < value && ((salario_minimo*3) + 1 > value)){
+           count_firts++;
+        }
+        else if((salario_minimo*3) < value && ((salario_minimo* 9) + 1 > value)){
+           count_second++;
+        }
+        else if((salario_minimo* 9) < value && ((salario_minimo*20) + 1 > value)){
+           count_thirth++;
+        }else {
+            count_fourth++;
+        }
+
         count_lines ++;
     }
 
+    printf("%i\n", count_firts);
+    printf("%i\n", count_second);
+    printf("%i\n", count_thirth);
+    printf("%i\n", count_fourth);
+    printf("%i\n", count_lines);
+
     fclose(fp);
-    if (line)
+    if (line){
         free(line);
+    }
     exit(EXIT_SUCCESS);
 }
