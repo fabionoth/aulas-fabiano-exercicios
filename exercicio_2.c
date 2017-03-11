@@ -4,6 +4,8 @@
 //Adapte  a  solução  do  exercício  anterior  para  que  a  saída  seja  exatamente  conforme  especificada  na figura2
 
  
+void print_blanc();
+void print_value(int value);
 
 int main(){
     int valor = 10;
@@ -13,25 +15,32 @@ int main(){
     for(linha = 1; linha < valor; linha++){
         for (coluna = (valor*(-1)); coluna < (valor); coluna++){
             if(coluna == 0){
-                printf("%i",linha);
+                print_value(linha);
             }
             if(coluna < 0){
                 if(linha > (coluna*(-1))){
-                    printf("%i",(linha - (coluna *(-1))));
+                    print_value(linha - (coluna *(-1)));
                 }else {
-                    printf(" ");
+                    print_blanc();    
                 }
             }else if(coluna > 0){
                 if(linha > coluna){
-                    printf("%i",(linha-coluna));
+                    print_value(linha-coluna);
                 }else {
-                    printf(" ");
+                    print_blanc();
                 }
             }
         }
         printf("\n");
     }
     return 0;
+}
+
+void print_blanc(){
+    printf(" ");
+}
+void print_value(int value){
+    printf("%i", value);
 }
 
 /*
