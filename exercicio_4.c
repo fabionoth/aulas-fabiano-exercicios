@@ -29,17 +29,20 @@ void multiplica();
 int main(void)
 {
    multiplica(); 
-   printf("%i", b);
+   printf("%i\n", sum);
    return 0;
 }
 
 void multiplica(){
-    while(a <= 1){
-        if(i % 2 == 0){
+    while(a >= 1){
+        printf("%i\n", i);
+        if(i % 2 == 0 || a == 1){
             sum = b + sum;
         }
         a = a/2;
         b = b*2;
+        printf("a: %i\n", a);
+        printf("b: %i\n", b);
         i++;
     }
 }
