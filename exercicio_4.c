@@ -13,55 +13,51 @@ o mesmo ocorre com 53*26 = 1378
 
 Faça uma função em C que receba dois reais e retorne a multiplicação dos dois, do modo como foi especificado acima. Não é permitido uso de vetore. 
 
+***********************************
+Copiado de https://github.com/Spacial/csstuff/blob/master/Algorithms/C/exerc04.c
+
 */
 
+
+
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
+//#include <assert.h>
+//#include <limits.h>
+//#include <stdbool.h>
 
-int a = 5;
-int b = 5;
-int isPar = 0;
+#define DEBUG 0
 
-int sum = 0;
-int i = 0;
-
-void multiplica();
-
-int main(void)
+int main()
 {
-    if (a % 2 == 0)
+    int n = 1, temp = 0;
+    float n1 = 0.0, n2 = 0.0;
+    float total = 0.0;
+    scanf("%f %f", &n1, &n2);
+    while (n)
     {
-        isPar = 1;
+        //    for (int n=n1; n >= 1; n--){
+        temp = n1;
+        if ((temp % 2) == 1)
+        {
+            if (DEBUG)
+            {
+                printf("soma-> %f : %f\n", total, n2);
+            }
+            total += n2;
+        }
+        n1 = temp / 2;
+        n2 = n2 * 2;
+        if (DEBUG)
+        {
+            printf("%d = %f : %f\n", temp, n1, n2);
+        }
+        if (temp == 1)
+        {
+            n = 0;
+        }
     }
-    else
-    {
-        isPar = 0;
-    }
-    multiplica();
-    printf("%i\n", sum);
+    printf("\n Total: %f\n", total);
     return 0;
-}
-
-void multiplica()
-{
-    while (a >= 1)
-    {
-        if (isPar == 0)
-        {
-            if (i % 2 == 0 || a == 1)
-            {
-                sum = b + sum;
-            }
-        }
-        else
-        {
-            if (i & 1)
-            {
-                sum = b + sum;
-            }
-        }
-        a = a / 2;
-        b = b * 2;
-        i++;
-    }
 }
