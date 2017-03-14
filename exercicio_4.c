@@ -18,8 +18,9 @@ Faça uma função em C que receba dois reais e retorne a multiplicação dos do
 #include <stdio.h>
 #include <stdlib.h>
 
-int a = 53;
-int b = 26;
+int a = 5;
+int b = 5;
+int isPar = 0;
 
 int sum = 0;
 int i = 0;
@@ -28,26 +29,39 @@ void multiplica();
 
 int main(void)
 {
-   multiplica(); 
-   printf("%i\n", sum);
-   return 0;
+    if (a % 2 == 0)
+    {
+        isPar = 1;
+    }
+    else
+    {
+        isPar = 0;
+    }
+    multiplica();
+    printf("%i\n", sum);
+    return 0;
 }
 
-void multiplica(){
-    while(a >= 1){
-        printf("%i\n", i);
-        if(i % 2 == 0 || a == 1){
-            sum = b + sum;
+void multiplica()
+{
+    while (a >= 1)
+    {
+        if (isPar == 0)
+        {
+            if (i % 2 == 0 || a == 1)
+            {
+                sum = b + sum;
+            }
         }
-        a = a/2;
-        b = b*2;
-        printf("a: %i\n", a);
-        printf("b: %i\n", b);
+        else
+        {
+            if (i & 1)
+            {
+                sum = b + sum;
+            }
+        }
+        a = a / 2;
+        b = b * 2;
         i++;
     }
 }
-
-
-
-
-
